@@ -18,7 +18,7 @@ class NotaCarioca(object):
         self.certificate = kwargs.pop("certificate")
         self.city_code = kwargs.pop("city_code")
         self.env = kwargs.pop("env")
-        self.base_url = settings.URLS[self.city_code][self.env]
+        self.base_url = settings.URL[self.city_code][self.env]
         self.rps = models.RPS(**self.kwargs)
 
     def _get_rps(self, method):
@@ -26,6 +26,7 @@ class NotaCarioca(object):
 
     def _get_credentials(self, credential):
         filename = '%s-%s.pem' % (self.rps.emitter.cnpj, credential)
+        filename = '%s-%s.pem' % ("teste_myfinance", credential)
         file_obj = open('/tmp/%s' % filename, 'w+')
         file_obj.write(getattr(self, credential))
 
