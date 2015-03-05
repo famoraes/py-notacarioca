@@ -1,5 +1,5 @@
 URL = {
-    3303302: {
+    3304557: {
         "sandbox": "https://notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl",
         "production": "https://homologacao.notacarioca.rio.gov.br/WSNacional/nfse.asmx?wsdl"
     }
