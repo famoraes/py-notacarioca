@@ -1,0 +1,94 @@
+<Rps>
+    <InfRps Id="RPS{{ rps.number }}">
+        <IdentificacaoRps>
+            <Numero>{{ rps.number }}</Numero>
+            <Serie>{{ rps.serie }}</Serie>
+            <Tipo>{{ rps.rps_type }}</Tipo>
+        </IdentificacaoRps>
+        <DataEmissao>{{ rps.emission_date|format_datetime }}</DataEmissao>
+        <NaturezaOperacao>{{ rps.operation_nature }}</NaturezaOperacao>
+        <OptanteSimplesNacional>{{ rps.emitter.national_simple }}</OptanteSimplesNacional>
+        <IncentivadorCultural>{{ rps.emitter.cultural_promoter }}</IncentivadorCultural>
+        <Status>{{ rps.status }}</Status>
+        {% if rps.substitute_rps %}
+            <RpsSubstituido>
+                <Numero>{{ rps.substitute_rps.number }}</Numero>
+                <Serie>{{ rps.substitute_rps.serie }}</Serie>
+                <Tipo>{{ rps.substitute_rps.rps_type }}</Tipo>
+            </RpsSubstituido>
+        {% endif %}
+        <Servico>
+            <Valores>
+                <ValorServicos>{{ rps.service.values.service_amount }}</ValorServicos>
+                <ValorDeducoes>{{ rps.service.values.deduction_amount }}</ValorDeducoes>
+                <ValorPis>{{ rps.service.values.pis_amount }}</ValorPis>
+                <ValorCofins>{{ rps.service.values.cofins_amount }}</ValorCofins>
+                <ValorInss>{{ rps.service.values.inss_amount }}</ValorInss>
+                <ValorIr>{{ rps.service.values.ir_amount }}</ValorIr>
+                <ValorCsll>{{ rps.service.values.csll_amount }}</ValorCsll>
+                <IssRetido>{{ rps.service.values.retained_iss }}</IssRetido>
+                <ValorIss>{{ rps.service.values.iss_amount }}</ValorIss>
+                <OutrasRetencoes>{{ rps.service.values.other_retentions_amount }}</OutrasRetencoes>
+                <Aliquota>{{ rps.service.values.aliquota|format_percent }}</Aliquota>
+                <ValorLiquidoNfse>{{ rps.service.values.liquid_amount }}</ValorLiquidoNfse>
+                <DescontoIncondicionado>{{ rps.service.values.unconditioned_discount }}</DescontoIncondicionado>
+                <DescontoCondicionado>{{ rps.service.values.discount_conditioning }}</DescontoCondicionado>
+            </Valores>
+            <ItemListaServico>{{ rps.service.service_item_list }}</ItemListaServico>
+            <CodigoTributacaoMunicipio>{{ rps.service.city_tax_code }}</CodigoTributacaoMunicipio>
+            <Discriminacao>{{ rps.service.description }}</Discriminacao>
+            <CodigoMunicipio>{{ rps.service.city_code }}</CodigoMunicipio>
+        </Servico>
+        <Prestador>
+            <Cnpj>{{ rps.emitter.cnpj }}</Cnpj>
+            <InscricaoMunicipal>{{ rps.emitter.city_inscription }}</InscricaoMunicipal>
+        </Prestador>
+        {% if rps.taker %}
+            <Tomador>
+            <IdentificacaoTomador>
+                <CpfCnpj>
+                    {% if rps.taker.cnpj %}
+                        <Cnpj>{{ rps.taker.cnpj }}</Cnpj>
+                    {% else %}
+                        <Cpf>{{ rps.taker.cpf|default('00000000000') }}</Cpf>
+                    {% endif %}
+                </CpfCnpj>
+            </IdentificacaoTomador>
+            {% if rps.taker.social_reason %}
+                <RazaoSocial>{{ rps.taker.social_reason|normalize }}</RazaoSocial>
+            {% endif %}
+            <Endereco>
+                {% if rps.taker.address.street %}
+                    <Endereco>{{ rps.taker.address.street|normalize }}</Endereco>
+                {% endif %}
+                {% if rps.taker.address.number %}
+                    <Numero>{{ rps.taker.address.number|normalize }}</Numero>
+                {% endif %}
+                {% if rps.taker.address.complement %}
+                    <Complemento>{{ rps.taker.address.complement|normalize }}</Complemento>
+                {% endif %}
+                {% if rps.taker.address.neighborhood %}
+                    <Bairro>{{ rps.taker.address.neighborhood|normalize }}</Bairro>
+                {% endif %}
+                {% if rps.taker.address.city_code %}
+                    <CodigoMunicipio>{{ rps.taker.address.city_code }}</CodigoMunicipio>
+                {% endif %}
+                {% if rps.taker.address.state %}
+                    <Uf>{{ rps.taker.address.state|normalize }}</Uf>
+                {% endif %}
+                {% if rps.taker.address.zip_code %}
+                    <Cep>{{ rps.taker.address.zip_code }}</Cep>
+                {% endif %}
+            </Endereco>
+            <Contato>
+                {% if rps.taker.phone %}
+                    <Telefone>{{ rps.taker.phone }}</Telefone>
+                {% endif %}
+                {% if rps.taker.email %}
+                    <Email>{{ rps.taker.email }}</Email>
+                {% endif %}
+            </Contato>
+          </Tomador>
+        {% endif %}
+    </InfRps>
+</Rps>

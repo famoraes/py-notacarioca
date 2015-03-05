@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><S:Body><{{ method }} xmlns="http://tempuri.org/"><cabec></cabec><msg>{{ msg }}</msg></{{ method }}></S:Body></S:Envelope>
