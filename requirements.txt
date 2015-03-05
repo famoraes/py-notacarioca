@@ -1,0 +1,7 @@
+suds
+suds_requests
+requests
+jinja2
+enum
+xmltodict
+dateutils
