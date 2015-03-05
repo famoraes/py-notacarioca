@@ -151,21 +151,15 @@ class ResponseRPS(ErrorMixin):
         if not in_process:
             self._process_response()
 
-    def _get_protocol(self, response):
-        self.rps.protocol = response["EnviarLoteRpsResposta"]["Protocolo"]
-
     def _build_nfse(self, response):
-        nfse_inf = response["ListaNfse"]["CompNfse"]["Nfse"]["InfNfse"]
+        nfse_inf = response["CompNfse"]["Nfse"]["InfNfse"]
         self.nfse = NFSe(**nfse_inf)
 
     def _process_response(self):
         response = xmltodict.parse(self.response)
 
-        if response.get("EnviarLoteRpsResposta"):
-            self._get_protocol(response)
-
-        if response.get("ConsultarLoteRpsResposta"):
-            response = response["ConsultarLoteRpsResposta"]
+        if response.get("GerarNfseResposta"):
+            response = response["GerarNfseResposta"]
 
             if "ListaMensagemRetorno" in response.keys():
                 self._build_errors(response)

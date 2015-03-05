@@ -49,8 +49,7 @@ class NotaCarioca(object):
 
     def send(self):
         client = self._get_client()
-        response = client.service.RecepcionarLoteRps(
-            self.rps.generate_xml("send_rps"))
+        response = client.service.GerarNfse(self.rps.generate_xml("send_rps"))
 
         print response
 

@@ -1,5 +1,5 @@
 <Rps>
-    <InfRps Id="RPS{{ rps.number }}">
+    <InfRps xmlns="http://www.abrasf.org.br/ABRASF/arquivos/nfse.xsd" Id="RPS{{ rps.number }}">
         <IdentificacaoRps>
             <Numero>{{ rps.number }}</Numero>
             <Serie>{{ rps.serie }}</Serie>
