@@ -7,8 +7,14 @@ URL = {
 
 TEMPLATES = {
     'send_rps': "RecepcionarLoteRps.xml",
+    'status': "ConsultarSituacaoLoteRps.xml",
+    'get_nfse': "ConsultarNfseEnvio.xml",
+    'cancel': "CancelarNfseEnvio.xml"
 }
 
 METHODS = {
     'send_rps': "RecepcionarLoteRps",
+    'status': "ConsultarSituacaoLoteRps",
+    'get_nfse': "ConsultarNfse",
+    'cancel': "CancelarNfse"
 }

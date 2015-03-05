@@ -51,7 +51,7 @@ class RPS(object):
         self.service = Service(**kwargs.pop("service"))
 
     def _get_template(self, template):
-        env = Environment(loader=PackageLoader('pywebiss', 'templates'))
+        env = Environment(loader=PackageLoader('notacarioca', 'templates'))
         env.filters["normalize"] = filters.normalize_str
         env.filters["format_percent"] = filters.format_percent
         env.filters["format_datetime"] = filters.format_datetime
@@ -71,13 +71,9 @@ class RPS(object):
     def generate_xml(self, method):
         tmpl = settings.TEMPLATES[method]
         xml = self._generate_xml(tmpl, rps=self)
-        msg = etree.tostring(xml)
 
-        envelope = self._generate_xml("soap_envelope.xml",
-            method=settings.METHODS[method],
-            msg=escape(msg))
+        return etree.tostring(xml)
 
-        return etree.tostring(envelope)
 
 class Emitter(object):
 

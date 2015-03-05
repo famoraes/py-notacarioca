@@ -7,7 +7,7 @@ from lxml import etree
 from suds.sax.text import Raw
 from xml.sax.saxutils import escape
 
-from notacarioca import settings#, models
+from notacarioca import settings, models
 
 
 class NotaCarioca(object):
@@ -50,41 +50,46 @@ class NotaCarioca(object):
     def send(self):
         client = self._get_client()
         response = client.service.RecepcionarLoteRps(
-            __inject={'msg': self.rps.generate_xml("send_rps")})
+            self.rps.generate_xml("send_rps"))
+
+        print response
 
         return models.ResponseRPS(self.rps, response)
 
-    # def status(self, nfse=False):
-    #     if nfse:
-    #         return self.update_nfse()
+    def status(self, nfse=False):
+        if nfse:
+            return self.update_nfse()
 
-    #     client = self._get_client()
+        client = self._get_client()
 
-    #     try:
-    #         response = client.service.ConsultarLoteRps(
-    #             __inject={'msg': self.rps.generate_xml("status")})
-    #     except:
-    #         return models.ResponseRPS(self.rps, in_process=True)
+        try:
+            response = client.service.ConsultarLoteRps(
+                self.rps.generate_xml("status"))
+            print response
+        except:
+            return models.ResponseRPS(self.rps, in_process=True)
 
-    #     return models.ResponseRPS(self.rps, response)
+        return models.ResponseRPS(self.rps, response)
 
-    # def download_nfse(self):
-    #     client = self._get_client()
-    #     response = client.service.ConsultarNfse(
-    #         __inject={'msg': self.rps.generate_xml("get_nfse")})
+    def download_nfse(self):
+        client = self._get_client()
+        response = client.service.ConsultarNfse(
+            self.rps.generate_xml("get_nfse"))
 
-    #     return models.NFSeXML(response)
+        return models.NFSeXML(response)
 
-    # def update_nfse(self):
-    #     client = self._get_client()
-    #     response = client.service.ConsultarNfse(
-    #         __inject={'msg': self.rps.generate_xml("get_nfse")})
+    def update_nfse(self):
+        client = self._get_client()
+        response = client.service.ConsultarNfse(
+            self.rps.generate_xml("get_nfse"))
 
-    #     return models.ResponseRPS(self.rps, response)
+        return models.ResponseRPS(self.rps, response)
 
-    # def cancel(self):
-    #     client = self._get_client()
-    #     response = client.service.CancelarNfse(
-    #         __inject={'msg': self.rps.generate_xml("cancel")})
+    def cancel(self):
+        client = self._get_client()
+        response = client.service.CancelarNfse(
+            self.rps.generate_xml("cancel"))
 
-    #     return models.ResponseCancel(response)
+        print response
+
+        return models.ResponseCancel(response)
