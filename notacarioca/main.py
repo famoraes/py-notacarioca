@@ -51,8 +51,6 @@ class NotaCarioca(object):
         client = self._get_client()
         response = client.service.GerarNfse(self.rps.generate_xml("send_rps"))
 
-        print response
-
         return models.ResponseRPS(self.rps, response)
 
     def status(self, nfse=False):
@@ -62,7 +60,7 @@ class NotaCarioca(object):
         client = self._get_client()
 
         try:
-            response = client.service.ConsultarLoteRps(
+            response = client.service.ConsultarNfse(
                 self.rps.generate_xml("status"))
             print response
         except:
@@ -88,7 +86,5 @@ class NotaCarioca(object):
         client = self._get_client()
         response = client.service.CancelarNfse(
             self.rps.generate_xml("cancel"))
-
-        print response
 
         return models.ResponseCancel(response)

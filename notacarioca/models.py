@@ -163,16 +163,19 @@ class ResponseRPS(ErrorMixin):
 
             if "ListaMensagemRetorno" in response.keys():
                 self._build_errors(response)
-            else:
-                self.status = flags.NFSE_PROCESS["accepted"]
-                self._build_nfse(response)
+
+                return None
+
+            self.status = flags.NFSE_PROCESS["accepted"]
 
         if response.get("ConsultarNfseResposta"):
             response = response["ConsultarNfseResposta"]
+            self.status = flags.NFSE_PROCESS["accepted"]
 
-            if response["ListaNfse"]["CompNfse"]["NfseCancelamento"]:
+            if response["ListaNfse"]["CompNfse"].get("NfseCancelamento"):
                 self.status = flags.NFSE_PROCESS["cancelled"]
-                self._build_nfse(response)
+
+        self._build_nfse(response)
 
 
 class ResponseCancel(ErrorMixin):
