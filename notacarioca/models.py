@@ -200,7 +200,7 @@ class Error(object):
 
         self.description = kwargs.pop("Mensagem")
         self.code = kwargs.pop("Codigo")
-        self.tip = kwargs.pop("Correcao")
+        self.tip = kwargs.pop("Correcao", None)
 
 
 class NFSe(object):

@@ -51,6 +51,8 @@ class NotaCarioca(object):
         client = self._get_client()
         response = client.service.GerarNfse(self.rps.generate_xml("send_rps"))
 
+        print response
+
         return models.ResponseRPS(self.rps, response)
 
     def status(self, nfse=False):
@@ -62,7 +64,6 @@ class NotaCarioca(object):
         try:
             response = client.service.ConsultarNfse(
                 self.rps.generate_xml("status"))
-            print response
         except:
             return models.ResponseRPS(self.rps, in_process=True)
 
