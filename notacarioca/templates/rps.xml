@@ -28,7 +28,9 @@
                 <ValorCsll>{{ rps.service.values.csll_amount }}</ValorCsll>
                 <IssRetido>{{ rps.service.values.retained_iss }}</IssRetido>
                 <ValorIss>{{ rps.service.values.iss_amount }}</ValorIss>
+                <ValorIssRetido>{{ rps.service.values.retained_iss_amount }}</ValorIssRetido>
                 <OutrasRetencoes>{{ rps.service.values.other_retentions_amount }}</OutrasRetencoes>
+                <BaseCalculo>{{ rps.service.values.calculation_base }}</BaseCalculo>
                 <Aliquota>{{ rps.service.values.aliquota|format_percent }}</Aliquota>
                 <ValorLiquidoNfse>{{ rps.service.values.liquid_amount }}</ValorLiquidoNfse>
                 <DescontoIncondicionado>{{ rps.service.values.unconditioned_discount }}</DescontoIncondicionado>
