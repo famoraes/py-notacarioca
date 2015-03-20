@@ -49,7 +49,6 @@ class NotaCarioca(object):
 
     def send(self):
         client = self._get_client()
-        print self.rps.generate_xml("send_rps")
         response = client.service.GerarNfse(self.rps.generate_xml("send_rps"))
 
         print response
