@@ -26,7 +26,6 @@ class NotaCarioca(object):
 
     def _get_credentials(self, credential):
         filename = '%s-%s.pem' % (self.rps.emitter.cnpj, credential)
-        filename = '%s-%s.pem' % ("teste_myfinance", credential)
         file_obj = open('/tmp/%s' % filename, 'w+')
         file_obj.write(getattr(self, credential))
 
@@ -50,8 +49,6 @@ class NotaCarioca(object):
     def send(self):
         client = self._get_client()
         response = client.service.GerarNfse(self.rps.generate_xml("send_rps"))
-
-        print response
 
         return models.ResponseRPS(self.rps, response)
 
