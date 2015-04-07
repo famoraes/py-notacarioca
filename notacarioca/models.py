@@ -34,9 +34,8 @@ class RPS(object):
         self.rps_type = kwargs.pop("rps_type")
         self.emission_date = kwargs.pop("emission_date",
             datetime.datetime.now().isoformat())
-        self.operation_nature = kwargs.pop("operation_nature",
-            flags.OperationNature.no_municipio)
-        self.status = flags.Status.normal
+        self.operation_nature = kwargs.pop("operation_nature")
+        self.status = kwargs.pop("status")
 
         # Control fields
         self.protocol = kwargs.pop("protocol", None)
@@ -80,8 +79,8 @@ class Emitter(object):
     def __init__(self, **kwargs):
         self.cnpj = kwargs.pop("cnpj")
         self.city_inscription = kwargs.pop("city_inscription")
-        self.national_simple = kwargs.pop("national_simple", flags.YesNo.no)
-        self.cultural_promoter = kwargs.pop("cultural_promoter", flags.YesNo.no)
+        self.national_simple = kwargs.pop("national_simple")
+        self.cultural_promoter = kwargs.pop("cultural_promoter")
 
 
 class Service(object):
@@ -104,7 +103,7 @@ class Values(object):
         self.cofins_amount = kwargs.pop("cofins_amount")
         self.iss_amount = kwargs.pop("iss_amount")
         self.ir_amount = kwargs.pop("ir_amount")
-        self.retained_iss = kwargs.pop("retained_iss", flags.YesNo.no)
+        self.retained_iss = kwargs.pop("retained_iss")
         self.retained_iss_amount = kwargs.pop("retained_iss_amount")
         self.csll_amount = kwargs.pop("csll_amount")
         self.calculation_base = kwargs.pop("calculation_base")

@@ -1,57 +1,33 @@
+# -*- coding: utf-8 -*-
 
-from enum import Enum
+RPS_SITUATION = (
+    (1, 'Normal'),
+    (2, 'Cancelado')
+)
 
+OPERATION_NATURE = (
+    (1, 'Tributação no município'),
+    (2, 'Tributação fora do município'),
+    (3, 'Isenção'),
+    (4, 'Imune'),
+    (5, 'Exigibilidade suspensa por decisão judicial'),
+    (6, 'Exigibilidade suspensa por procedimento Administrativo')
+)
 
-class EnumRepresentation(Enum):
-    """
-    Reprents a Enum with a string
-    """
-    def __str__(self):
-        if self.value:
-            return str(self.value)
-        else:
-            return super(EnumRepresentation, self).__str__()
+TAX_REGIME = (
+    (1, "Microempresa Municipal"),
+    (2, "Estimativa"),
+    (3, "Sociedade Professional"),
+    (4, "Cooperativa"),
+    (5, 'MEI - Microempresário Individual'),
+    (6, 'ME EPP - Microempresário e Empresa de Pequeno Porte')
+)
 
-
-class Status(EnumRepresentation):
-    normal = 1
-    cancelado = 2
-
-
-class OperationNature(EnumRepresentation):
-    no_municipio = 1
-    fora_do_municipio = 2
-    isencao = 3
-    imune = 4
-    suspensa_decisao_judicial = 5
-    suspensa_procedimento_administrativo = 6
-
-
-class TaxRegime(EnumRepresentation):
-    microempresa_municipal = 1
-    estimativa = 2
-    sociedade_profissionais = 3
-    cooperativa = 4
-    mei = 5
-    meepp = 6
-
-
-class YesNo(EnumRepresentation):
-    yes = 1
-    no = 2
-
-
-class RpsType(EnumRepresentation):
-    rps = 1
-    nota_conjugada = 2
-    cupom = 3
-
-
-class CpfCnpj(EnumRepresentation):
-    cpf = 1
-    cnpj = 2
-    nao_informado = 3
-
+RPS_TYPE = (
+    (1, "RPS"),
+    (2, "Nota Conjugada"),
+    (3, "Cumpom")
+)
 
 NFSE_PROCESS = {
     'processing': 'processing',
