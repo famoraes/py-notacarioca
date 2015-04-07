@@ -35,7 +35,7 @@ class RPS(object):
         self.emission_date = kwargs.pop("emission_date",
             datetime.datetime.now().isoformat())
         self.operation_nature = kwargs.pop("operation_nature")
-        self.status = kwargs.pop("status")
+        self.status = kwargs.pop("rps_situation")
 
         # Control fields
         self.protocol = kwargs.pop("protocol", None)
