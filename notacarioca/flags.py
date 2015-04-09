@@ -15,6 +15,7 @@ OPERATION_NATURE = (
 )
 
 TAX_REGIME = (
+    ("", "---------"),
     (1, "Microempresa Municipal"),
     (2, "Estimativa"),
     (3, "Sociedade Professional"),
