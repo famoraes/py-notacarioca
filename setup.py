@@ -8,9 +8,8 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='notacarioca',
-    version='0.2.3',
-    package_dir={'': 'notacarioca'},
-    packages=find_packages('notacarioca'),
+    version='0.2.4',
+    packages=['notacarioca'],
     include_package_data=True,
     license='Apache 2.0',
     description='NFSe for Rio de Janeiro city.',
