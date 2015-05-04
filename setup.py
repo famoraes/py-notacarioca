@@ -1,5 +1,5 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
@@ -8,8 +8,9 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='notacarioca',
-    version='0.2.2',
-    packages=['notacarioca'],
+    version='0.2.3',
+    package_dir={'': 'notacarioca'},
+    packages=find_packages('notacarioca'),
     include_package_data=True,
     license='Apache 2.0',
     description='NFSe for Rio de Janeiro city.',
