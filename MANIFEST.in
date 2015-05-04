@@ -1,0 +1,4 @@
+include README.md
+include requirements.txt
+recursive-include notacarioca/templates *.xml
+recursive-include notacarioca/templates/__init__.py
