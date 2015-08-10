@@ -27,7 +27,7 @@ TAX_REGIME = (
 RPS_TYPE = (
     (1, "RPS"),
     (2, "Nota Conjugada"),
-    (3, "Cumpom")
+    (3, "Cupom")
 )
 
 NFSE_PROCESS = {
