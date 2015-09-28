@@ -2,7 +2,7 @@
 
 import re
 import flags
-import datetime
+from datetime import datetime
 import settings
 import xmltodict
 
@@ -33,7 +33,7 @@ class RPS(object):
         self.number = kwargs.pop("number")
         self.rps_type = kwargs.pop("rps_type")
         self.emission_date = kwargs.pop("emission_date",
-            datetime.datetime.now().isoformat())
+            datetime.now().isoformat())
         self.operation_nature = kwargs.pop("operation_nature")
         self.status = kwargs.pop("rps_situation")
 
@@ -204,9 +204,17 @@ class Error(object):
 
 class NFSe(object):
 
+    def _format_datetime(self, date):
+        if date:
+            date = datetime.strptime(date, "%Y-%m-%dT%H:%M:%S")
+
+        return date
+
     def __init__(self, **kwargs):
+        print kwargs
         self.key = kwargs["CodigoVerificacao"] or None
         self.number = int(kwargs["Numero"]) or None
+        self.emission_date_nfse = self._format_datetime(kwargs.get("DataEmissao"))
         self.mirror = None
         self.xml = None
 
