@@ -29,13 +29,13 @@ class ErrorMixin(object):
 class RPS(object):
 
     def __init__(self, **kwargs):
-        self.serie = kwargs.pop("serie")
+        self.serie = kwargs.pop("service_values_serie")
         self.number = kwargs.pop("number")
-        self.rps_type = kwargs.pop("rps_type")
+        self.rps_type = kwargs.pop("service_values_rps_type")
         self.emission_date = kwargs.pop("emission_date",
             datetime.now().isoformat())
-        self.operation_nature = kwargs.pop("operation_nature")
-        self.status = kwargs.pop("rps_situation")
+        self.operation_nature = kwargs.pop("service_values_operation_nature")
+        self.status = kwargs.pop("service_values_rps_situation")
 
         # Control fields
         self.protocol = kwargs.pop("protocol", None)
